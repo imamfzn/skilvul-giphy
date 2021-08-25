@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { Link } from 'react-router-dom';
+
+import giphyMainLogo from './img/giphy-main-logo.svg';
+
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="main-menu">
+        <h1> Welcome to Skilvul Giphy </h1>
+
+        <img src={giphyMainLogo} className="giphy-main-logo"/>
+
+        <ul className="list-menu">
+          <li><Link to="/iron-man-giphy">Iron Man Giphy</Link></li>
+          <li><Link to="/search-giphy">Search your Giphy</Link></li>
+        </ul>
+      </div>
     </div>
   );
 }
