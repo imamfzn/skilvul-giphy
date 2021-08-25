@@ -1,9 +1,9 @@
-import defaultGif from '../img/iron-man-default.gif'
+import './GifItem.css';
 
-function GifItem() {
+function GifItem({ gif }) {
   return (
-    <div className="col-4">
-      <img src={defaultGif}/>
+    <div className="col-4 gif-item">
+      <img className="gif-img" src={gif.url} alt=""/>
     </div>
   );
 }

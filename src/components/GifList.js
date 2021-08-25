@@ -1,13 +1,10 @@
 import GifItem from './GifItem'
 
-function GifList() {
+function GifList({ gifs }) {
   function renderItems() {
-    const items = [];
-    for (let i = 0 ; i < 9 ; i++) {
-      items.push(<GifItem/>);
-    }
-
-    return items;
+    return gifs.map(gif => {
+      return <GifItem gif={gif} key={gif.id}/>
+    });
   }
 
   return (
