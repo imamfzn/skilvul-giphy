@@ -13,7 +13,7 @@ function SearchGiphy (props) {
       .then(res => res.data.map(data => {
         return {
           id: data.id,
-          url: data.images.original.url
+          url: data.images.fixed_height_downsampled.url
         };
       }))
       .then(gifs => {
@@ -28,7 +28,7 @@ function SearchGiphy (props) {
     }
 
     setInput(keyword);
-    setTypingTimeout(setTimeout(() => fetchData(keyword), 1000));
+    setTypingTimeout(setTimeout(() => fetchData(keyword), 500));
   };
 
   return (
