@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import GifList from './components/GifList';
 import SearchBar from './components/SearchBar';
 
 function SearchGiphy (props) {
   const [input, setInput] = useState('');
   const [gifList, setGifList] = useState([]);
+  const [typingTimeout, setTypingTimeout] = useState(0);
 
   const fetchData = async (keyword = 'coding') => {
     return fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${keyword}&limit=9`)
@@ -12,7 +13,7 @@ function SearchGiphy (props) {
       .then(res => res.data.map(data => {
         return {
           id: data.id,
-          url: data.images.original.url
+          url: data.images.fixed_height_downsampled.url
         };
       }))
       .then(gifs => {
@@ -20,15 +21,15 @@ function SearchGiphy (props) {
       });
   };
 
-  const updateInput = async (keyword) => {
-    setInput(keyword);
-    fetchData(keyword);
-  };
+  // handle searching after user typing+
+  const searching = async (keyword) => {
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
 
-  useEffect(() => {
-    const timeout = setTimeout(() => fetchData(), 1000);
-    return () => clearTimeout(timeout);
-  }, []);
+    setInput(keyword);
+    setTypingTimeout(setTimeout(() => fetchData(keyword), 500));
+  };
 
   return (
     <div className="container">
@@ -36,7 +37,7 @@ function SearchGiphy (props) {
 
       <SearchBar
         keyword={input}
-        setKeyword={updateInput}
+        setKeyword={searching}
       />
 
       <GifList gifs={gifList} />
