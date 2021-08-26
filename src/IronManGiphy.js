@@ -1,5 +1,6 @@
 import React from 'react'
 import GifList from './components/GifList';
+import GiphyFetcher from './helper/GiphyFetcher'
 import './Page.css'
 
 class IronManGiphy extends React.Component {
@@ -8,14 +9,8 @@ class IronManGiphy extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=iron+man&limit=9`)
-      .then(res => res.json())
-      .then(res => res.data.map(data => {
-        return {
-          id: data.id,
-          url: data.images.original.url
-        };
-      }))
+    GiphyFetcher
+      .fetch('iron man')
       .then(gifs => this.setState({ gifs }));
   }
 
@@ -33,6 +28,5 @@ class IronManGiphy extends React.Component {
     );
   }
 }
-
 
 export default IronManGiphy;
