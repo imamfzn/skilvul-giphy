@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import GifList from './components/GifList';
 import SearchBar from './components/SearchBar';
+import './Page.css'
 
 function SearchGiphy (props) {
   const [input, setInput] = useState('');
@@ -32,15 +33,19 @@ function SearchGiphy (props) {
   };
 
   return (
-    <div className="container">
-      <h1>Your Search Giphy</h1>
+    <div className="fluid-container">
+      <div className="header-container">
+        <h1 className="menu-header">Search Your Giphy</h1>
 
-      <SearchBar
-        keyword={input}
-        setKeyword={searching}
-      />
+        <SearchBar
+          keyword={input}
+          setKeyword={searching}
+        />
+      </div>
 
-      <GifList gifs={gifList} />
+      <div className="gif-list-container">
+        <GifList gifs={gifList} />
+      </div>
     </div>
   );
 }

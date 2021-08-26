@@ -7,11 +7,11 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <div className="main-menu">
-        <h1> Welcome to Skilvul Giphy </h1>
+        <h1 className="header"> Welcome to Your Giphy </h1>
 
-        <img src={giphyMainLogo} className="giphy-main-logo" alt=""/>
+        <img src={giphyMainLogo} className="giphy-main-logo img-fluid" alt=""/>
 
         <ul className="list-menu">
           <li><Link to="/iron-man-giphy">Iron Man Giphy</Link></li>
