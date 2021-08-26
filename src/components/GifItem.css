@@ -5,3 +5,9 @@
 .gif-img {
   width: 100%;
 }
+
+.gif-loading {
+  width: 30%;
+  display: block;
+  margin: auto;
+}
