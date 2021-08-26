@@ -8,7 +8,7 @@ function GifList({ gifs }) {
   }
 
   return (
-    <div className="gift-list row g-4">
+    <div className="gift-list row g-5">
       {renderItems()}
     </div>
   );
