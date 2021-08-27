@@ -1,6 +1,6 @@
 import React from 'react'
 import GifList from './components/GifList';
-import GiphyFetcher from './helper/GiphyFetcher'
+import GiphyFetcher from './helpers/GiphyFetcher'
 import './Page.css'
 
 class IronManGiphy extends React.Component {
