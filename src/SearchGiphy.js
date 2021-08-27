@@ -8,6 +8,7 @@ function SearchGiphy (props) {
   const [input, setInput] = useState('');
   const [gifList, setGifList] = useState([]);
   const [typingTimeout, setTypingTimeout] = useState(0);
+  const [firstTime, setFirstTime] = useState(true);
 
   const fetchData = async (keyword) => {
     return GiphyFetcher
@@ -24,8 +25,19 @@ function SearchGiphy (props) {
     }
 
     setInput(keyword);
-    setTypingTimeout(setTimeout(() => fetchData(keyword), 500));
-  };
+    if (!keyword) {
+      return;
+    }
+
+    setTypingTimeout(setTimeout(() => {
+      fetchData(keyword).then(() => {
+        // to make not found information showable
+        if (firstTime) {
+          setFirstTime(false)
+        }
+      });
+    }, 500));
+  }
 
   return (
     <div className="fluid-container">
@@ -39,7 +51,7 @@ function SearchGiphy (props) {
       </div>
 
       <div className="gif-list-container">
-        <GifList gifs={gifList} />
+        <GifList gifs={gifList} firstTime={firstTime} />
       </div>
     </div>
   );
