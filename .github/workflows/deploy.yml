@@ -1,0 +1,44 @@
+#  Name of workflow
+name: Deploy Production
+
+# When workflow is triggered
+on:
+  push:
+    branches:
+      - master
+
+# Jobs to carry out
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Setup ENV File
+        run: |
+          touch .env
+          echo REACT_APP_GIPHY_API_KEY=${{ secrets.REACT_APP_GIPHY_API_KEY }} >> .env
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Deploy to netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
