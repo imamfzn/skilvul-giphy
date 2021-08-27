@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import './index.css';
 import App from './App';
-import IronManGiphy from './IronManGiphy'
-import SearchGiphy from './SearchGiphy'
+import IronManGiphy from './pages/IronManGiphy'
+import SearchGiphy from './pages/SearchGiphy'
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
