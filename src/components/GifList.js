@@ -1,4 +1,4 @@
-import GifItem from './GifItem'
+import GifItem from './GifItem';
 
 function GifList({ gifs, firstTime = true }) {
   function renderItems() {
@@ -10,9 +10,7 @@ function GifList({ gifs, firstTime = true }) {
       );
     }
 
-    return gifs.map(gif => {
-      return <GifItem gif={gif} key={gif.id}/>
-    });
+    return gifs.map((gif) => <GifItem gif={gif} key={gif.id} />);
   }
 
   return (
