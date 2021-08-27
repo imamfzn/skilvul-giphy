@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import Loading from '../img/loading.gif';
 import './GifItem.css';
-import Loading from '../loading.gif';
 
 function GifItem({ gif }) {
   const [isLoaded, setLoaded] = useState(false);

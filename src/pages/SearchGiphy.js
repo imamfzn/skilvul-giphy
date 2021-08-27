@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import GifList from './components/GifList';
-import SearchBar from './components/SearchBar';
-import GiphyFetcher from './helper/GiphyFetcher'
+import GifList from '../components/GifList';
+import SearchBar from '../components/SearchBar';
+import GiphyFetcher from '../helpers/GiphyFetcher'
 import './Page.css'
 
 function SearchGiphy (props) {
