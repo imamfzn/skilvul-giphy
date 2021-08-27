@@ -1,6 +1,8 @@
 function transform(data) {
   return {
     id: data.id,
+    gifUrl: data.url,
+    title: data.title,
     url: data.images.fixed_height_downsampled.url,
     width: data.images.original.width,
     height: data.images.original.height
