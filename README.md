@@ -16,12 +16,12 @@ https://imamfzn-giphy-skilvul.netlify.app/
 
 I already finished all main features and minimal components of this app, there are:
 
-[x] Homepage
-[x] Iron Man Giphy
-[x] Search Giphy
-[x] Search Bar
-[x] Gif List
-[x] Gif Item
+- [x] Homepage
+- [x] Iron Man Giphy
+- [x] Search Giphy
+- [x] Search Bar
+- [x] Gif List
+- [x] Gif Item
 
 
 # Setup
