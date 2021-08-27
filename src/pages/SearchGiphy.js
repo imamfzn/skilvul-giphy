@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar';
 import GiphyFetcher from '../helpers/GiphyFetcher'
 import './Page.css'
 
-function SearchGiphy (props) {
+function SearchGiphy () {
   const [input, setInput] = useState('');
   const [gifList, setGifList] = useState([]);
   const [typingTimeout, setTypingTimeout] = useState(0);
