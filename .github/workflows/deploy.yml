@@ -3,7 +3,7 @@ name: Deploy Production
 
 # When workflow is triggered
 on:
-  pull_request:
+  push:
     branches:
       - master
 
@@ -15,14 +15,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - run: yarn
+      - name: Install dependencies
+        run: yarn
 
       - name: Setup ENV File
         run: |
           touch .env
           echo REACT_APP_GIPHY_API_KEY=${{ secrets.REACT_APP_GIPHY_API_KEY }} >> .env
 
-      - run: npm run build --if-present
+      - name: Build
+        run: npm run build --if-present
 
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
