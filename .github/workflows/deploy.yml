@@ -16,6 +16,12 @@ jobs:
         uses: actions/checkout@v2
 
       - run: yarn
+
+      - name: Setup ENV File
+        run: |
+          touch .env
+          echo REACT_APP_GIPHY_API_KEY=${{ secrets.REACT_APP_GIPHY_API_KEY }} >> .env
+
       - run: npm run build --if-present
 
       - name: Deploy to netlify
