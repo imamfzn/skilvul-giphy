@@ -14,6 +14,8 @@ https://imamfzn-giphy-skilvul.netlify.app/
 
 # Features and Components
 
+![demo](./docs/screen-capture.gif)
+
 I already finished all main features and minimal components of this app, there are:
 
 - [x] Homepage
