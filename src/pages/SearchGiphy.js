@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import GifList from '../components/GifList';
 import SearchBar from '../components/SearchBar';
-import GiphyFetcher from '../helpers/GiphyFetcher'
-import './Page.css'
+import GiphyFetcher from '../helpers/GiphyFetcher';
+import './Page.css';
 
-function SearchGiphy (props) {
+function SearchGiphy() {
   const [input, setInput] = useState('');
   const [gifList, setGifList] = useState([]);
   const [typingTimeout, setTypingTimeout] = useState(0);
   const [firstTime, setFirstTime] = useState(true);
 
-  const fetchData = async (keyword) => {
-    return GiphyFetcher
-      .fetch(keyword)
-      .then(gifs => {
-        setGifList(gifs);
-      });
-  };
+  const fetchData = async (keyword) => GiphyFetcher
+    .fetch(keyword)
+    .then((gifs) => {
+      setGifList(gifs);
+    });
 
   // handle searching after user typing+
   const searching = async (keyword) => {
@@ -33,11 +31,11 @@ function SearchGiphy (props) {
       fetchData(keyword).then(() => {
         // to make not found information showable
         if (firstTime) {
-          setFirstTime(false)
+          setFirstTime(false);
         }
       });
     }, 500));
-  }
+  };
 
   return (
     <div className="fluid-container">
